@@ -2,40 +2,40 @@
 ## functions do
 
 ## Q1 makeCacheMatrix
-##Write a short comment describing this function
 
 ## First set the input x as a matrix
-## then set the solved value "s" as a null
-## finaly changed every reference to "mean" to "solve"
+## then set the inverse value "inv" as a null
+## finaly changed every reference to "mean" to "Inverse"
 makeCacheMatrix <- function(x = matrix(sample(1:100,9),3,3)) {
-  s <- NULL
+  inv <- NULL
   set <- function(y) {
     x <<- y
-    s <<- NULL
+    inv <<- NULL
   }
   get <- function() x
-  setsolve <- function(solve) s <<- solve
-  getsolve <- function() s
+  setInverse <- function(inverse) inv <<- inverse
+  setInverse <- function() inv
   list(set = set, get = get,
-       setsolve = setsolve,
-       getsolve = getsolve)
+       setInverse = setInverse,
+       getInverse = getInverse)
 }
 
 
 
 ## Q2 cacheSolve
-##Write a short comment describing this function
-## Return a matrix that is the inverse of 'x'
-## Like above changed "mean" to "solve" and additionaly "m" to "s"
+
+
 cacheSolve <- function(x, ...) {
-  s <- x$getsolve()
+  ## Return a matrix that is the inverse of 'x'
+  ## Like above changed "mean" to "inverse" and additionaly "m" to "inv"
+  inv <- x$getInverse()
   if(!is.null(s)) {
     message("getting inversed matrix")
-    return(s)
+    return(inv)
   }
   data <- x$get()
-  s <- solve(data, ...)
-  x$setsolve(s)
-  s
+  inv <- solve(data, ...)
+  x$setsolve(inv)
+  inv
 }
 
